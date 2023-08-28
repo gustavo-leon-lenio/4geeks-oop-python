@@ -1,4 +1,5 @@
 # Charla 4geeks Orientando Objetos en Python y no morir en el intento
+
 ## A.K.A Programación Orientada a Objetos con Python 101
 
 ¡Bienvenidos a la charla sobre Programación Orientada a Objetos (POO) en Python! En esta charla, exploraremos los conceptos fundamentales de la POO y cómo se aplican en el lenguaje de programación Python.
@@ -66,6 +67,5 @@ class Gato(Animal):
     def emitir_sonido(self):
         return "Miau!"
 ```
-
 
 ## Encapsulación

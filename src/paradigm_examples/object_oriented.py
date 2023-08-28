@@ -1,5 +1,15 @@
 class RecetaPebre:
-    def __init__(self, tomates, cebollin, cilantro, aji_verde, dientes_de_ajo, limon, sal, aceite):
+    def __init__(
+        self,
+        tomates,
+        cebollin,
+        cilantro,
+        aji_verde,
+        dientes_de_ajo,
+        limon,
+        sal,
+        aceite,
+    ):
         self.tomates = tomates
         self.cebollin = cebollin
         self.cilantro = cilantro
@@ -32,3 +42,5 @@ mi_pebre = RecetaPebre(
 
 # Preparar el "Pebre" utilizando la receta específica de la instancia
 mi_pebre.preparar()
+
+# Ir a_class_objects.py

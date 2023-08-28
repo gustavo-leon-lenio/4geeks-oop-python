@@ -1,4 +1,5 @@
-"""
+"""Ejemplo de Clase y Objeto.
+
 Todas las definiciones de clase comienzan con la palabra clase en inglés "class",
 seguida del nombre de la clase y dos puntos.
 
@@ -9,13 +10,8 @@ Si se trata de una palabra Auto
 Si se trata de multiples palabras MiAuto
 
 El cuerpo de una clase es cualquier código que está sangrado
-o indentado debajo de su definición.
-
+o indentado debajo de su definición
 """
-
-
-# class Auto:
-#     pass
 
 
 class Auto:
@@ -24,16 +20,26 @@ class Auto:
         self.motor = motor
         self.modelo = modelo
 
+    def acelerar(self):
+        pass
+
     def imprimir_auto(self):
         print(self.color, self.motor, self.modelo)
 
 
+# "🔴" "🟢" "🟡"
 
 
-auto_rojo = Auto("🔴", "carbón", "sedan")
-auto_verde = Auto("🟢", "gasolina", "pickup")
-auto_amarillo = Auto("🟡", "electrico", "SUV")
+auto_rojo = Auto("🔴", "gasolina", "sedan")
+auto_rojo_2 = Auto("🔴", "gasolina", "sedan")
+auto_verde = Auto("🟢", "eléctrico", "SUV")
+auto_amarillo = Auto("🟡", "diesel", "pick up")
 
 auto_rojo.imprimir_auto()
-auto_verde.imprimir_auto()
 auto_amarillo.imprimir_auto()
+auto_verde.imprimir_auto()
+
+
+print(auto_rojo_2 == auto_rojo)
+
+### Ir a Lamina

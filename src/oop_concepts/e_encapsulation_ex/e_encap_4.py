@@ -1,26 +1,22 @@
 class CuentaBancaria:
     def __init__(self, titular, saldo):
-        self.__titular = titular
-        self.__saldo = saldo
+        self.titular = titular
+        self.saldo = saldo
 
     def obtener_saldo(self):
-        return self.__saldo
+        return self.saldo
 
     def depositar(self, cantidad):
         if cantidad > 0:
-            self.__saldo += cantidad
-            print(
-                f"Depósito de ${cantidad} realizado. Saldo actual: ${self.__saldo}"
-            )
+            self.saldo += cantidad
+            print(f"Depósito de ${cantidad} realizado. Saldo actual: ${self.__saldo}")
         else:
             print("La cantidad debe ser mayor que cero.")
 
     def retirar(self, cantidad):
-        if 0 < cantidad <= self.__saldo:
-            self.__saldo -= cantidad
-            print(
-                f"Retiro de ${cantidad} realizado. Saldo actual: ${self.__saldo}"
-            )
+        if 0 < cantidad <= self.saldo:
+            self.saldo -= cantidad
+            print(f"Retiro de ${cantidad} realizado. Saldo actual: ${self.__saldo}")
         else:
             print("Fondos insuficientes o cantidad inválida.")
 

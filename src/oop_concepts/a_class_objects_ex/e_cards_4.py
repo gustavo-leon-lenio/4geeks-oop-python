@@ -1,7 +1,7 @@
-import random
+from random import shuffle
 
 
-class CartaUno:
+class CartaLuno:
     def __init__(self, color, valor):
         self.color = color
         self.valor = valor
@@ -10,7 +10,7 @@ class CartaUno:
         return f"{self.valor}-{self.color}"
 
 
-class BarajaUno:
+class BarajaLuno:
     def __init__(self) -> None:
         colores = ["🟡", "🔵", "🔴", "🟢"]
         valores = [
@@ -28,21 +28,24 @@ class BarajaUno:
             "reversa",
             "salto",
         ]
-        specials = ["+4", "W"] * 4
+        specials = ["+4", "W", "+4", "W", "+4", "W", "+4", "W"]
         self.cartas = []
         for color in colores:
             for valor in valores:
-                self.cartas.append(CartaUno(color, valor))
+                self.cartas.append(CartaLuno(color, valor))
 
-        self.cartas.extend(specials)
+        for special in specials:
+            self.cartas.append(CartaLuno("*", special))
 
     def revolver(self):
-        random.shuffle(self.cartas)
+        shuffle(self.cartas)
 
 
-if __name__ == "__main__":
-    baraja_uno = BarajaUno()
-    baraja_uno.revolver()
-    print(baraja_uno.cartas)
-    baraja_uno.revolver()
-    print(baraja_uno.cartas)
+baraja_uno = BarajaLuno()
+print("Antes de Revolver", baraja_uno.cartas)
+print("*" * 80)
+baraja_uno.revolver()
+print("Después de Revolver", baraja_uno.cartas)
+
+
+# ir a lamina
