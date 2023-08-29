@@ -9,14 +9,14 @@ class CuentaBancaria:
     def depositar(self, cantidad):
         if cantidad > 0:
             self.saldo += cantidad
-            print(f"Depósito de ${cantidad} realizado. Saldo actual: ${self.__saldo}")
+            print(f"Depósito de {cantidad}$ realizado. Saldo actual: ${self.saldo}")
         else:
             print("La cantidad debe ser mayor que cero.")
 
     def retirar(self, cantidad):
         if 0 < cantidad <= self.saldo:
             self.saldo -= cantidad
-            print(f"Retiro de ${cantidad} realizado. Saldo actual: ${self.__saldo}")
+            print(f"Retiro de {cantidad}$ realizado. Saldo actual: ${self.saldo}")
         else:
             print("Fondos insuficientes o cantidad inválida.")
 
@@ -25,6 +25,9 @@ class CuentaBancaria:
 mi_cuenta = CuentaBancaria("Alice", 1000)
 
 # Interactuar con la cuenta utilizando métodos encapsulados
-print(f"Saldo actual: ${mi_cuenta.obtener_saldo()}")
+print(f"Saldo actual: {mi_cuenta.obtener_saldo()}$")
 mi_cuenta.depositar(500)
 mi_cuenta.retirar(200)
+mi_cuenta.saldo = -9000
+
+print(f"Saldo actual: {mi_cuenta.obtener_saldo()}$")

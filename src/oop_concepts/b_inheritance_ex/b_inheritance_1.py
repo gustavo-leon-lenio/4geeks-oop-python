@@ -1,19 +1,3 @@
-"""Ejemplo de Clase y Objeto.
-
-Todas las definiciones de clase comienzan con la palabra clase en inglés "class",
-seguida del nombre de la clase y dos puntos.
-
-El nombre de la clase debe seguir el estilo de Pascal Case
-que escribe en mayúscula la letra inicial de cada palabra compuesta.
-
-Si se trata de una palabra Auto
-Si se trata de multiples palabras MiAuto
-
-El cuerpo de una clase es cualquier código que está sangrado
-o indentado debajo de su definición
-"""
-
-
 class ClasePadre:  # Parent Class ( Super Class)
     # Define las propiedades de la clase padre aquí
     # Otro nombre que se le puede dar a la clase padre es Clase Base o Super Clase
@@ -38,6 +22,16 @@ class Hijo(Madre):
     pass
 
 
+# pero que sucede si quisiéramos que hijo tuviera un atributo extra
+
+
+class Hijo(Madre):
+    def __init__(self, nombre, apellido, edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
+
+
 mamá = Madre("Claudina", "Cortéz")
 hija = Hijo("Nataly", "Cortéz")
 # hijo = Hijo("Enzo", "Cortéz")
@@ -47,4 +41,4 @@ print(mamá)
 print(hija)
 # print(hijo)
 # print(hijo_2)
-# ir a lamina
+# *************** ir a b_inheritance_2.py

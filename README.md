@@ -28,6 +28,8 @@ La Programación Orientada a Objetos es un paradigma de programación que se bas
 
 - **Polimorfismo**:Es La capacidad de diferentes clases (que pueden estar relacionadas a través de la herencia) de responder a una misma llamada de método de manera diferente.
 
+- **Abstracción**:Implica simplificar y representar la complejidad de la realidad de una manera más manejable. En esencia, la abstracción consiste en identificar las características esenciales y relevantes de un objeto o sistema mientras se omiten los detalles menos importantes.
+
 - **Encapsulación**: La encapsulación nos permite ocultar la implementación interna de un objeto y exponer solo una interfaz para interactuar con él.
 
 ## Clases y Objetos
@@ -68,4 +70,104 @@ class Gato(Animal):
         return "Miau!"
 ```
 
+## Abstracción
+
+```python
+import json
+import urllib.request
+
+# Sin abstracción
+url = "https://pokeapi.co/api/v2/pokemon/bulbasaur"
+req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+response = urllib.request.urlopen(req)
+
+if response.status == 200:
+    data = response.read().decode('utf-8')
+    pokemon_data = json.loads(data)
+    print(f"Información de {pokemon_data['name']}:")
+    print(f"Nombre: {pokemon_data['name']}")
+    print(f"Tipo(s): {[t['type']['name'] for t in pokemon_data['types']]}\n")
+else:
+    print(f"Error: {response.status}")
+
+#######
+class PokemonAPIClient:
+    # """Pokemon Api Client"""
+
+    BASE_URL = "https://pokeapi.co/api/v2"
+    HEADER = {'User-Agent': 'Mozilla/5.0'}
+
+    def retrieve_pokemon_by_name(self, pokemon_name):
+        url = f"{self.BASE_URL}/pokemon/{pokemon_name}"
+        req = urllib.request.Request(url, headers=self.HEADER)
+        response = urllib.request.urlopen(req)
+
+        if response.status == 200:
+            data = response.read().decode('utf-8')
+            return json.loads(data)
+        else:
+            print(f"Error: {response.status}")
+            return None
+
+    def list_pokemons(self):
+        """THIS Pokemons from URL"""
+        url = f"{self.BASE_URL}/pokemon/"
+        req = urllib.request.Request(url, headers=self.HEADER)
+        response = urllib.request.urlopen(req)
+
+        if response.status == 200:
+            data = response.read().decode('utf-8')
+            return json.loads(data)
+        else:
+            print(f"Error: {response.status}")
+            return None
+
+# Con abstracción
+# Crear una instancia del cliente
+pokemon_client = PokemonAPIClient()
+
+# Obtener información de un Pokémon por nombre
+pokemon_name = "bulbasaur"
+pokemon_data = pokemon_client.retrieve_pokemon_by_name(pokemon_name)
+if pokemon_data:
+    print(f"Información de {pokemon_name}:")
+    print(f"Nombre: {pokemon_data['name']}")
+    print(f"Tipo(s): {[t['type']['name'] for t in pokemon_data['types']]}\n")
+
+# Listar Pokémon
+pokemons_list = pokemon_client.list_pokemons()
+if pokemons_list:
+    print("Lista de Pokémon:")
+    for pokemon in pokemons_list["results"]:
+        print(pokemon["name"])
+```
+
 ## Encapsulación
+
+```python
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+
+    # Getter para obtener el nombre
+    def get_nombre(self):
+        return self.__nombre
+
+    # Setter para actualizar el nombre con validación
+    def set_nombre(self, nuevo_nombre):
+        if len(nuevo_nombre) > 0:
+            self.__nombre = nuevo_nombre
+
+    # Getter para obtener la edad
+    def get_edad(self):
+        return self.__edad
+
+    # Setter para actualizar la edad con validación
+    def set_edad(self, nueva_edad):
+        if nueva_edad >= 0:
+            self.__edad = nueva_edad
+
+persona = Persona("James", 99)
+persona.__nombre ## Attribute Error
+```
